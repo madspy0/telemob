@@ -1,4 +1,4 @@
-package com.telemob.newarchitecture;
+package telemob.expo.client.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.telemob.BuildConfig;
-import com.telemob.newarchitecture.components.MainComponentsRegistry;
-import com.telemob.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import telemob.expo.client.BuildConfig;
+import telemob.expo.client.newarchitecture.components.MainComponentsRegistry;
+import telemob.expo.client.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

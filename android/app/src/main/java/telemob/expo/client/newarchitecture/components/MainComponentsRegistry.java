@@ -1,4 +1,4 @@
-package com.telemob.newarchitecture.components;
+package telemob.expo.client.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

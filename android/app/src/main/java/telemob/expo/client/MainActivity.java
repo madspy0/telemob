@@ -1,4 +1,4 @@
-package com.telemob;
+package telemob.expo.client;
 
 import android.os.Build;
 import android.os.Bundle;
