@@ -1,6 +1,6 @@
 import React from "react";
 import {Formik} from "formik";
-import {setUser} from "./util/auth";
+import {setSecureUser, setUser} from "./util/auth";
 import {Button, StyleSheet, TextInput, View} from "react-native";
 import {StatusBar} from "expo-status-bar";
 
@@ -10,7 +10,7 @@ export const LoginForm = (currentUser, setCurrentUser) => {
             initialValues={{username: '', password: ''}}
             onSubmit={
                 values => {
-                    setUser(values, setCurrentUser)
+                    setSecureUser(values, setCurrentUser)
                 }
             }
         >

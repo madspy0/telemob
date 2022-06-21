@@ -1,7 +1,7 @@
 import React from 'react';
 import {getUsers} from "./util/users";
 import {Button, StyleSheet, Text, View, FlatList} from "react-native";
-import {logout} from "./util/auth";
+import {logout, logoutSecureUser} from "./util/auth";
 import {StatusBar} from "expo-status-bar";
 
 export const List = (currentUser, setCurrentUser) => {
@@ -10,8 +10,8 @@ export const List = (currentUser, setCurrentUser) => {
     return (
         <View style={styles.container}>
             <Text>{currentUser.username}</Text>
-            <Button onPress={() =>
-                logout().then(() => setCurrentUser(null))
+            <Button onPress={() => logoutSecureUser().then(() => setCurrentUser(null))
+              //  logout().then(() => setCurrentUser(null))
             } title="logout"/>
             <FlatList
                 data={[

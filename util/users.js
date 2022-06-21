@@ -1,8 +1,8 @@
-import {getUser} from "./auth";
+import {getSecureUser} from "./auth";
 
 export const getUsers = () => {
-    const url = 'http://192.168.1.138:8000/api/users';
-    getUser()
+    const url = 'http://192.168.33.102/api/users';
+    getSecureUser()
       //  .then(response => JSON.parse(response))
         .then(user => {
                 fetch(url,
@@ -21,7 +21,7 @@ export const getUsers = () => {
                             }
                         }
                     )
-                    .catch(e => console.log('error fetch ', e))
+                    .catch(e => console.log('error fetch ', JSON.stringify(e)))
             }
         )
         .catch(e => console.log(e))

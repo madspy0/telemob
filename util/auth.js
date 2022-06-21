@@ -1,5 +1,39 @@
 //import {DevSettings} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
+import {deleteItemAsync} from "expo-secure-store";
+
+export async function setSecureUser(values, setCurrentUser) {
+    getJwt(values)
+        .then(jwt => {
+            SecureStore.setItemAsync('telemob_user', jwt);
+            alert('Secure data successfully saved')
+            setCurrentUser(JSON.parse(jwt))
+        })
+        .catch(e => {
+            alert('Failed to save the data to the secure storage')
+            console.log(e)
+        })
+}
+
+export async function getSecureUser() {
+    let result = await SecureStore.getItemAsync('telemob_user');
+    if (result) {
+        return (JSON.parse(result))
+    }
+/*    else {
+        alert('No values stored under that key.');
+    }*/
+}
+
+export async function logoutSecureUser() {
+    try {
+        await deleteItemAsync('telemob_user');
+    } catch (e) {
+        alert('Failed to remove secure storage');
+    }
+
+}
 
 export const logout = async () => {
     try {
@@ -26,7 +60,7 @@ export const setUser = async (values, setCurrentUser) => {
             AsyncStorage.setItem('@telemob_user', jwt)
             alert('Data successfully saved')
             //DevSettings.reload()
-            setCurrentUser (JSON.parse(jwt))
+            setCurrentUser(JSON.parse(jwt))
         })
         .catch(e => {
             alert('Failed to save the data to the storage')
@@ -35,7 +69,7 @@ export const setUser = async (values, setCurrentUser) => {
 }
 
 export const getJwt = async (values) => {
-    const url = 'http://192.168.1.138:8000/api/login';
+    const url = 'http://192.168.33.102/api/login';
     try {
         const response = await fetch(url,
             {
@@ -47,6 +81,7 @@ export const getJwt = async (values) => {
                 })
             }
         );
+
         if (!response.ok) {
             await Promise.reject(response);
         }
